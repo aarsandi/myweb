@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+</head>
+
+<body>
+    <header style="background-image: url('img/2.jpg');">
+        <img class="logo" src="img/sample-logo.png" width="200px" />
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="#">
+                    <li>Blog</li>
+                </a>
+                <a href="#">
+                    <li>Community</li>
+                </a>
+                <a class="download-btn" href="#">
+                    <li>Download the Launcher (PC)</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div id="product-show" class="article-body">
+            <div class="article-content">
+                <h1 id="product-name"></h1>
+                <img class="img-body center" src="img/article.jpg" />
+                </p>
+                <p id="product-desc"></p>
+                <h2 id="product-price"></h2>
+            </div>
+            <div class="aside">
+                <span>april 29 2020</span> <br />
+                <span>By unknown people</span> <br />
+                <div class="aside-promotion">
+                    <div class="snippet">
+                        <img class="aside-img center" src="img/product.png" />
+                    </div>
+                    <div id="add-to-cart-btn" class="promotion-link">
+                        Buy Now
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h5>copyright 2020 by Unknown</h5>
+    </footer>
+    <script>
+        var products = JSON.parse(localStorage.getItem("product"));
+        var queryString = location.search.substring(1);
+        var temp
+        var tmp
+        if (products.length == 0) {
+            document.getElementById("product-show").remove();
+        } else {
+            for (i = 0; i < products.length; i++) {
+                if (products[i].title == queryString) {
+                    temp = products[i]
+                    tmp = i
+                }
+            }
+        }
+        document.getElementById("product-name").innerHTML = temp.title;
+        document.getElementById("product-price").innerHTML = `Rp${temp.price}`;
+        document.getElementById("product-desc").innerHTML = temp.description;
+        document.getElementById("add-to-cart-btn").onclick = function () { addCart(tmp) };
+
+        function addCart(item) {
+            window.location.href = `cart.html?${item}`
+        }
+    </script>
+</body>
+
+</html>

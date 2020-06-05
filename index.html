@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+</head>
+
+<body>
+    <header style="background-image: url('img/2.jpg');">
+        <img class="logo" src="img/sample-logo.png" width="200px" />
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <li>Home</li>
+                </a>
+                <a href="#">
+                    <li>Blog</li>
+                </a>
+                <a href="#">
+                    <li>Community</li>
+                </a>
+                <a class="download-btn" href="#">
+                    <li>Download the Launcher (PC)</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="jumbotron">
+            <div class="jumbotron-item">
+                <h2>Welcome to My Homepage</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor necessitatibus quae voluptate
+                    explicabo architecto fugiat asperiores illo quibusdam qui mollitia, porro fugit. Illum sapiente
+                    modi, ut harum aliquam accusamus unde.</p>
+            </div>
+            <div class="jumbo-btn center">
+                <a class="jumbo-link" href="">Play Now</a>
+            </div>
+        </div>
+
+        <div class="social">
+            <h3></h3>
+        </div>
+    </section>
+
+    <section>
+        <h1 class="article-index-title">News</h1>
+        <div id="product-index"class="article-index center">
+            <!-- list product -->
+        </div>
+        <div>
+            <button class="btn center">
+                <span>View All</span>
+            </button>
+        </div>
+    </section>
+
+    <section>
+        <img class="newsletter-image" src="img/connect.png" />
+        <div class="newsletter center">
+
+            <h1>Stay up to date</h1>
+            <p>Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne.</p>
+
+            <a class="newsletter-btn" href="">login and connect</a>
+        </div>
+    </section>
+    <footer>
+        <h5>copyright 2020 by Unknown</h5>
+    </footer>
+    <script>
+        var products = [
+			{
+				title: "HP",
+				price: 10000,
+				description: "Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne. Blandit omnesque scripserit pri ex, et pri dicant eirmod deserunt. Aeque perpetua ea nec "
+			},
+			{
+				title: "Lenovo",
+				price: 35000,
+				description: "Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne. Blandit omnesque scripserit pri ex, et pri dicant eirmod deserunt. Aeque perpetua ea nec "
+			},
+			{
+				title: "DELL",
+				price: 13500,
+				description: "Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne. Blandit omnesque scripserit pri ex, et pri dicant eirmod deserunt. Aeque perpetua ea nec "
+			},
+			{
+				title: "Toshiba",
+				price: 50000,
+				description: "Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne. Blandit omnesque scripserit pri ex, et pri dicant eirmod deserunt. Aeque perpetua ea nec "
+			},
+			{
+				title: "Sony",
+				price: 28400,
+				description: "Lorem Ipsum Dolor Sit Amet, mea te verear signiferumque, per illum labores ne. Blandit omnesque scripserit pri ex, et pri dicant eirmod deserunt. Aeque perpetua ea nec "
+			}
+		];
+		localStorage.setItem("product", JSON.stringify(products));
+
+		function storeIndex(item) {
+			let output = ""
+			for (i = 0; i < item.length; i++) {
+				output += `<article class="article">
+                <a href="product.html?${item[i].title}">
+                    <h3>${item[i].title}</h3>
+                </a>
+                <img class="article-image center" src="img/article.jpg" />
+                <p>
+                    ${item[i].description}
+                </p>
+                <h2>Price : Rp${item[i].price}</h2>
+            </article>`;
+			}
+			return output
+		}
+		document.getElementById("product-index").innerHTML = storeIndex(products);
+    </script>
+</body>
+
+</html>
